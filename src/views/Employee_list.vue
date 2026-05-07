@@ -1,15 +1,87 @@
-<script>
-import Header from '../components/header.vue';
+<script setup>
 import { RouterLink,RouterView } from 'vue-router';
+import { ref } from 'vue'
+
+const employee_list = ref([
+  {
+    id: '1', 
+    department: '主管部門', 
+    job: '執行長', 
+    name: '林庭郁', 
+    email: 'wendy@gmail.com', 
+    phone: '0987654321', 
+    birthday: '1997/04/13',
+  },
+  {
+    id: '2', 
+    department: '前端部門', 
+    job: '前端工程師', 
+    name: '鄭丞恩', 
+    email: 'dandy@gmail.com', 
+    phone: '0987654321', 
+    birthday: '2001/11/03',
+  },
+  {
+    id: '3', 
+    department: '後端部門', 
+    job: '後端工程師', 
+    name: '洪誠佑', 
+    email: 'wendy@gmail.com', 
+    phone: '0987654321', 
+    birthday: '1997/04/13',
+  },
+  {
+    id: '4', 
+    department: '前端部門', 
+    job: '技術主管', 
+    name: '林榆凱', 
+    email: 'wendy@gmail.com', 
+    phone: '0987654321', 
+    birthday: '1997/04/13',
+  },
+  {
+    id: '5', 
+    department: '後端部門', 
+    job: '後端工程師', 
+    name: '黃品瑜', 
+    email: 'wendy@gmail.com', 
+    phone: '0987654321', 
+    birthday: '1997/04/13',
+  },
+])
+import { useRouter, useRoute } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
+console.log(router.currentRoute.value.name);
+const routeArray=router.getRoutes();
+console.log( `${routeArray[0].name} / ${routeArray[1].name}`);
+console.log( ref);
+// console.log( );
+// console.log(route);
+
+
+function pushWithQuery(query) {
+  router.push({
+    name: 'search',
+    query: {
+      ...route.query,
+      ...query,
+    },
+  })
+}
+
+function goBack(){
+  router.getRoutes()
+}
+
 </script>
 
 <template>
-  <Header></Header>
-
   <div class="wrapper">
     <!-- 麵包屑 -->
     <div class="breadcrumb_block">
-      <RouterLink to="/">首頁</RouterLink>
+      <RouterLink to="/" class="breadcrumb">首頁</RouterLink>
       <a class="breadcrumb">></a>
       <a href="" class="breadcrumb">全體員工資料表</a>
     </div>
@@ -79,7 +151,16 @@ import { RouterLink,RouterView } from 'vue-router';
           </tr>
         </thead>
         <tbody>
-          <!-- 從js加入 -->
+          <tr v-for="employee in employee_list" @click="goBack()">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.job }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.phone }}</td>
+            <td>{{ employee.birthday }}</td>
+            <td><div>工具一</div><div>工具二</div></td>
+          </tr>
         </tbody>
       </table>
     </div>

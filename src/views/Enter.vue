@@ -1,9 +1,8 @@
 <script setup>
-import Header from '@/components/header.vue';
 </script>
 
 <template>
-  <Header></Header>
+
   <div class="wrapper">
     <!-- 麵包屑 -->
     <p class="breadcrumb">首頁</p>
