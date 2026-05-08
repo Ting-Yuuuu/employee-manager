@@ -1,9 +1,13 @@
+<script setup>
+  import { RouterLink } from 'vue-router';
+</script>
+
 <template>
   <header>
-    <a href="./index.html">
+    <RouterLink to="/">
       <img src="/src/assets/images/logo_pic.png" alt="" width="50">
       <h2 class="header_text">Hopper</h2>
-    </a>
+    </RouterLink> 
   </header>
 </template>
 
