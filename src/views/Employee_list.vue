@@ -1,5 +1,5 @@
 <script setup>
-import { RouterLink,RouterView } from 'vue-router';
+import { RouterLink } from 'vue-router';
 import { ref } from 'vue'
 
 const employee_list = ref([
@@ -51,29 +51,29 @@ const employee_list = ref([
 ])
 import { useRouter, useRoute } from 'vue-router'
 
-const router = useRouter()
-const route = useRoute()
-console.log(router.currentRoute.value.name);
-const routeArray=router.getRoutes();
-console.log( `${routeArray[0].name} / ${routeArray[1].name}`);
-console.log( ref);
-// console.log( );
-// console.log(route);
+// const router = useRouter()
+// const route = useRoute()
+// console.log(router.currentRoute.value.name);
+// const routeArray=router.getRoutes();
+// console.log( `${routeArray[0].name} / ${routeArray[1].name}`);
+// console.log( ref);
+// // console.log( );
+// // console.log(route);
 
 
-function pushWithQuery(query) {
-  router.push({
-    name: 'search',
-    query: {
-      ...route.query,
-      ...query,
-    },
-  })
-}
+// function pushWithQuery(query) {
+//   router.push({
+//     name: 'search',
+//     query: {
+//       ...route.query,
+//       ...query,
+//     },
+//   })
+// }
 
-function goBack(){
-  router.getRoutes()
-}
+// function goBack(){
+//   router.getRoutes()
+// }
 
 </script>
 
@@ -98,18 +98,19 @@ function goBack(){
           <label for="">所屬部門</label>
           <select name="" id="" class="dropdown">
             <option value="">-請選擇-</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1">主管部門</option>
+            <option value="2">前端部門</option>
+            <option value="3">後端部門</option>
           </select>
         </div>
         <div class="search">
           <label for="">工作職稱</label>
           <select name="" id="" class="dropdown">
             <option value="">-請選擇-</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+            <option value="1">執行長</option>
+            <option value="2">技術主管</option>
+            <option value="3">前端工程師</option>
+            <option value="4">後端工程師</option>
           </select>
         </div>
       </div>
@@ -119,16 +120,16 @@ function goBack(){
           <input type="text" class="" placeholder="請輸入內容">
         </div>
         <div class="add_block">
-          <a href="./add_staff.html" class="add_btn">新增資料</a>
+          <RouterLink to="/Add_employee" class="add_btn">新增資料</RouterLink>
           <div class="data_block">
             <div class="data">
               <p>資料筆數：</p>
               <p class="total_list"></p>
             </div>
             <div class="page">
-              <i class="fa-regular fa-circle-left"></i>
+              <font-awesome-icon icon="fa-circle-left"></font-awesome-icon> 
               <p>1/1</p>
-              <i class="fa-regular fa-circle-right"></i>
+              <font-awesome-icon icon="fa-circle-right"></font-awesome-icon> 
             </div>
           </div>
         </div>
@@ -151,7 +152,7 @@ function goBack(){
           </tr>
         </thead>
         <tbody>
-          <tr v-for="employee in employee_list" @click="goBack()">
+          <tr v-for="employee in employee_list">
             <td>{{ employee.id }}</td>
             <td>{{ employee.department }}</td>
             <td>{{ employee.job }}</td>
@@ -159,7 +160,12 @@ function goBack(){
             <td>{{ employee.email }}</td>
             <td>{{ employee.phone }}</td>
             <td>{{ employee.birthday }}</td>
-            <td><div>工具一</div><div>工具二</div></td>
+            <td>
+              <div class="tool">
+                <RouterLink to="/Edit_employee"><font-awesome-icon icon="fa-pen"></font-awesome-icon></RouterLink>
+                <font-awesome-icon icon="fa-trash-can"></font-awesome-icon>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -169,7 +175,7 @@ function goBack(){
   
 </template>
 
-<style>
+<style scoped>
 /* 內容區 */
 .wrapper{
   width: 90%;
@@ -312,7 +318,7 @@ function goBack(){
   margin: 0;
 }
 
-i.fa-regular{
+.fa-circle-left, .fa-circle-right{
   font-size: 20px;
   cursor:pointer;
 }
@@ -348,19 +354,23 @@ tbody td{
   padding: 8px;
 }
 
+
 .tool{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   border: none;
-  height: fit-content;
 }
 
-.tool i{
-  font-size: 16px;
+.fa-pen{
+  margin-right: 8px;
   cursor: pointer;
 }
+
+.fa-trash-can{
+  cursor: pointer;
+}
+
 
 td a{
   text-decoration: none;
@@ -423,6 +433,10 @@ td a{
 
   .add_btn{
     width: 100%;
+  }
+
+  .wrapper{
+    padding-bottom: 30px;
   }
 }
 

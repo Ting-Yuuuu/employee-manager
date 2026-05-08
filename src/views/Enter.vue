@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router';
 </script>
 
 <template>
@@ -14,12 +15,12 @@
 
     <div class="content">
       <RouterLink to="/Employee_list"><img src="/src/assets/images/enter.webp" width="450" alt=""></RouterLink>
-      <RouterLink to="/Employee_list"><a class="enter_btn">進入員工資料表</a></RouterLink>
+      <RouterLink to="/Employee_list" class="enter_btn">進入員工資料表</RouterLink>
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 /* 內容區 */
 .wrapper{
   width: 90%;
@@ -31,6 +32,7 @@
   color: #333333;
   font-size: 16px;
   padding: 10px 0px;
+  margin: 16px 0;
 }
 
 /* 標題 */
