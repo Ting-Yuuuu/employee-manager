@@ -49,7 +49,18 @@ const employee_list = ref([
     birthday: '1997/04/13',
   },
 ])
+
 import { useRouter, useRoute } from 'vue-router'
+// ------- 計算資料筆數 -----------
+const dataSum = ref();
+function totalData(){
+  const allList = document.querySelectorAll('tbody tr').length
+  dataSum.value = allList
+}
+// ------- 記得呼叫 在頁面載入時計算 ----------
+document.addEventListener('DOMContentLoaded',function(){
+  totalData();
+})
 
 // const router = useRouter()
 // const route = useRoute()
@@ -124,7 +135,7 @@ import { useRouter, useRoute } from 'vue-router'
           <div class="data_block">
             <div class="data">
               <p>資料筆數：</p>
-              <p class="total_list"></p>
+              <p class="total_list">{{ dataSum }}</p>
             </div>
             <div class="page">
               <font-awesome-icon icon="fa-circle-left"></font-awesome-icon> 
