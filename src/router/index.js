@@ -10,22 +10,22 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: '首頁',
+      name: 'index',
       component: Enter,
     },
     {
       path: '/Employee_list', // 建議小寫並用橫線分隔，URL 比較美觀
-      name: '全體員工資料表',
+      name: 'Employee_list',
       component: Employee_list,
     },
     {
       path: '/Edit_employee', // 編輯通常需要帶 ID 參數
-      name: '編輯員工資料',
+      name: 'Edit_employee',
       component: Edit_employee,
     },
     {
       path: '/Add_employee',
-      name: '新增員工資料',
+      name: 'Add_employee',
       component: Add_employee,
     },
   ],
