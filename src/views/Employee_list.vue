@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const employee_list = ref([
   {
@@ -56,11 +56,15 @@ const dataSum = ref();
 function totalData(){
   const allList = document.querySelectorAll('tbody tr').length
   dataSum.value = allList
+  // computed(function(){
+  //   return employee_list.value.length
+  // })
 }
 // ------- 記得呼叫 在頁面載入時計算 ----------
-document.addEventListener('DOMContentLoaded',function(){
+onMounted(function(){
   totalData();
 })
+
 
 // const router = useRouter()
 // const route = useRoute()
