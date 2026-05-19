@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 import axios from "axios";
 
@@ -73,45 +73,11 @@ onMounted(() => {
 //   },
 // ])
 
-import { useRouter, useRoute } from 'vue-router'
 // ------- 計算資料筆數 -----------
-const dataSum = ref();
-function totalData() {
-  const allList = document.querySelectorAll('tbody tr').length
-  dataSum.value = allList
-  // computed(function(){
-  //   return employee_list.value.length
-  // })
-}
-// ------- 記得呼叫 在頁面載入時計算 ----------
-onMounted(function () {
-  totalData();
+const totalData = computed(function(){
+  return employee_list.value.length;
 })
 
-
-// const router = useRouter()
-// const route = useRoute()
-// console.log(router.currentRoute.value.name);
-// const routeArray=router.getRoutes();
-// console.log( `${routeArray[0].name} / ${routeArray[1].name}`);
-// console.log( ref);
-// // console.log( );
-// // console.log(route);
-
-
-// function pushWithQuery(query) {
-//   router.push({
-//     name: 'search',
-//     query: {
-//       ...route.query,
-//       ...query,
-//     },
-//   })
-// }
-
-// function goBack(){
-//   router.getRoutes()
-// }
 
 </script>
 
@@ -162,7 +128,7 @@ onMounted(function () {
           <div class="data_block">
             <div class="data">
               <p>資料筆數：</p>
-              <p class="total_list">{{ dataSum }}</p>
+              <p class="total_list">{{ totalData }}</p>
             </div>
             <div class="page">
               <font-awesome-icon icon="fa-circle-left"></font-awesome-icon>
