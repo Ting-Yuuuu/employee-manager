@@ -5,13 +5,13 @@
 <template>
   <div class="wrapper">
     <!-- 麵包屑 -->
-    <div class="breadcrumb_block">
+    <!-- <div class="breadcrumb_block">
       <RouterLink to="/" class="breadcrumb">首頁</RouterLink>
       <a class="breadcrumb">></a>
       <RouterLink to="/Employee_list" class="breadcrumb">全體員工資料表</RouterLink>
       <a class="breadcrumb">></a>
       <RouterLink to="/Add_employee" class="breadcrumb">新增員工資料</RouterLink>
-    </div>
+    </div> -->
     
     <!-- 標題 -->
     <div class="title_block">
