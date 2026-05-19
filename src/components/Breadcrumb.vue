@@ -16,6 +16,7 @@ import { watch } from "vue";
 // 這個是響應式容器，放麵包屑用
 const breadcrumbs = ref([])
 const route = useRoute();
+console.log('快讓我看看 route 的真面目：', route);
 watch(
   // 監聽對象：路由
   () => route.fullPath,

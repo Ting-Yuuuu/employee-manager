@@ -6,7 +6,7 @@ import { RouterLink } from 'vue-router';
 
   <div class="wrapper">
     <!-- 麵包屑 -->
-    <p class="breadcrumb">首頁</p>
+    <!-- <p class="breadcrumb">首頁</p> -->
     
     <!-- 標題 -->
     <div class="title_block">
@@ -23,7 +23,7 @@ import { RouterLink } from 'vue-router';
 <style scoped>
 /* 內容區 */
 .wrapper{
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 

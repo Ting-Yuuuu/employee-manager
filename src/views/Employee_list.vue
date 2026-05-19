@@ -209,8 +209,8 @@ onMounted(function () {
 
 <style scoped>
 /* 內容區 */
-.wrapper {
-  width: 90%;
+.wrapper{
+  width: 100%;
   margin: 0 auto;
 }
 
