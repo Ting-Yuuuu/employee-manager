@@ -77,7 +77,7 @@
 <style lang="scss" scoped>
   /* 內容區 */
 .wrapper{
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 

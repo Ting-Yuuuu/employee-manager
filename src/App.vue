@@ -7,10 +7,15 @@ import Breadcrumb from '@/components/Breadcrumb.vue';
 
 <template>
   <Header></Header>
-  <Breadcrumb></Breadcrumb>
-  <RouterView />
+  <div class="wrapper">
+    <Breadcrumb></Breadcrumb>
+    <RouterView />
+  </div>
 </template>
 
 <style scoped>
-
+  .wrapper{
+    width: 90%;
+    margin: 0 auto;
+  }
 </style>
