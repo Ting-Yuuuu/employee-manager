@@ -1,59 +1,76 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const employee_list = ref([
-  {
-    id: '1', 
-    department: '主管部門', 
-    job: '執行長', 
-    name: '林庭郁', 
-    email: 'wendy@gmail.com', 
-    phone: '0987654321', 
-    birthday: '1997/04/13',
-  },
-  {
-    id: '2', 
-    department: '前端部門', 
-    job: '前端工程師', 
-    name: '鄭丞恩', 
-    email: 'dandy@gmail.com', 
-    phone: '0987654321', 
-    birthday: '2001/11/03',
-  },
-  {
-    id: '3', 
-    department: '後端部門', 
-    job: '後端工程師', 
-    name: '洪誠佑', 
-    email: 'wendy@gmail.com', 
-    phone: '0987654321', 
-    birthday: '1997/04/13',
-  },
-  {
-    id: '4', 
-    department: '前端部門', 
-    job: '技術主管', 
-    name: '林榆凱', 
-    email: 'wendy@gmail.com', 
-    phone: '0987654321', 
-    birthday: '1997/04/13',
-  },
-  {
-    id: '5', 
-    department: '後端部門', 
-    job: '後端工程師', 
-    name: '黃品瑜', 
-    email: 'wendy@gmail.com', 
-    phone: '0987654321', 
-    birthday: '1997/04/13',
-  },
-])
+import axios from "axios";
+
+const employee_list = ref([])
+
+const getPeople = async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/people');
+
+    employee_list.value = res.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+onMounted(() => {
+  getPeople();
+});
+// const employee_list = ref([
+//   {
+//     id: '1', 
+//     department: '主管部門', 
+//     job: '執行長', 
+//     name: '林庭郁', 
+//     email: 'wendy@gmail.com', 
+//     phone: '0987654321', 
+//     birthday: '1997/04/13',
+//   },
+//   {
+//     id: '2', 
+//     department: '前端部門', 
+//     job: '前端工程師', 
+//     name: '鄭丞恩', 
+//     email: 'dandy@gmail.com', 
+//     phone: '0987654321', 
+//     birthday: '2001/11/03',
+//   },
+//   {
+//     id: '3', 
+//     department: '後端部門', 
+//     job: '後端工程師', 
+//     name: '洪誠佑', 
+//     email: 'wendy@gmail.com', 
+//     phone: '0987654321', 
+//     birthday: '1997/04/13',
+//   },
+//   {
+//     id: '4', 
+//     department: '前端部門', 
+//     job: '技術主管', 
+//     name: '林榆凱', 
+//     email: 'wendy@gmail.com', 
+//     phone: '0987654321', 
+//     birthday: '1997/04/13',
+//   },
+//   {
+//     id: '5', 
+//     department: '後端部門', 
+//     job: '後端工程師', 
+//     name: '黃品瑜', 
+//     email: 'wendy@gmail.com', 
+//     phone: '0987654321', 
+//     birthday: '1997/04/13',
+//   },
+// ])
 
 import { useRouter, useRoute } from 'vue-router'
 // ------- 計算資料筆數 -----------
 const dataSum = ref();
-function totalData(){
+function totalData() {
   const allList = document.querySelectorAll('tbody tr').length
   dataSum.value = allList
   // computed(function(){
@@ -61,7 +78,7 @@ function totalData(){
   // })
 }
 // ------- 記得呼叫 在頁面載入時計算 ----------
-onMounted(function(){
+onMounted(function () {
   totalData();
 })
 
@@ -100,7 +117,7 @@ onMounted(function(){
       <a class="breadcrumb">></a>
       <a href="" class="breadcrumb">全體員工資料表</a>
     </div> -->
-    
+
     <!-- 標題 -->
     <div class="title_block">
       <h2 class="title">全體員工資料表</h2>
@@ -142,9 +159,9 @@ onMounted(function(){
               <p class="total_list">{{ dataSum }}</p>
             </div>
             <div class="page">
-              <font-awesome-icon icon="fa-circle-left"></font-awesome-icon> 
+              <font-awesome-icon icon="fa-circle-left"></font-awesome-icon>
               <p>1/1</p>
-              <font-awesome-icon icon="fa-circle-right"></font-awesome-icon> 
+              <font-awesome-icon icon="fa-circle-right"></font-awesome-icon>
             </div>
           </div>
         </div>
@@ -185,27 +202,27 @@ onMounted(function(){
         </tbody>
       </table>
     </div>
-      
+
   </div>
-  
+
 </template>
 
 <style scoped>
 /* 內容區 */
-.wrapper{
+.wrapper {
   width: 90%;
   margin: 0 auto;
 }
 
 /* 麵包屑 */
-.breadcrumb_block{
+.breadcrumb_block {
   display: flex;
   gap: 8px;
   margin: 16px 0;
   align-items: center;
 }
 
-.breadcrumb{
+.breadcrumb {
   color: #333333;
   font-size: 16px;
   padding: 10px 0px;
@@ -213,59 +230,59 @@ onMounted(function(){
 }
 
 /* 標題 */
-.title_block{
+.title_block {
   display: inline-block;
   padding: 0px 10px;
   border-left: 3px solid #535353;
   margin-bottom: 16px;
 }
 
-.title{
+.title {
   color: #828282;
   margin: 0;
 }
 
 /* 搜尋區塊 */
-.search_block{
+.search_block {
   display: flex;
   gap: 12px;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.search_first_block{
+.search_first_block {
   display: flex;
   width: 40%;
   gap: 12px;
 }
 
-.search_first_block .search{
+.search_first_block .search {
   width: 100%;
 }
 
-.search{
+.search {
   display: flex;
   flex-direction: column;
   width: 20%;
 }
 
-.search_second_block{
+.search_second_block {
   display: flex;
   width: 60%;
 
 }
 
-.search_second_block .search{
+.search_second_block .search {
   display: flex;
   width: 36%;
-  
+
 }
 
-.search label{
+.search label {
   margin-bottom: 8px;
 }
 
-.search .dropdown{
+.search .dropdown {
   width: 100%;
   height: 40px;
   font-size: 14px;
@@ -273,7 +290,7 @@ onMounted(function(){
   border-color: #a9a9a9;
 }
 
-.search_second_block input{
+.search_second_block input {
   width: 100%;
   height: 40px;
   font-size: 14px;
@@ -285,14 +302,14 @@ onMounted(function(){
 }
 
 /* 新增資料 */
-.add_block{
+.add_block {
   margin-left: auto;
 }
 
-.add_btn{
+.add_btn {
   display: block;
   text-decoration: none;
-  background-color:#88cbf1 ;
+  background-color: #88cbf1;
   color: #fff;
   padding: 8px;
   width: 250px;
@@ -305,45 +322,46 @@ onMounted(function(){
   text-decoration: none;
 }
 
-.add_btn:hover{
+.add_btn:hover {
   background-color: #48b1e8;
   color: #fff;
 }
 
-.data_block{
+.data_block {
   display: flex;
   justify-content: space-between;
 }
 
-.data{
+.data {
   display: flex;
 }
 
-.data p{
+.data p {
   margin: 0;
 }
 
-.page{
+.page {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.page p{
+.page p {
   margin: 0;
 }
 
-.fa-circle-left, .fa-circle-right{
+.fa-circle-left,
+.fa-circle-right {
   font-size: 20px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* 表格 */
-.table_block{
+.table_block {
   width: 100%;
 }
 
-table{
+table {
   border-collapse: collapse;
   border: 1px solid lightgray;
   width: 100%;
@@ -351,108 +369,110 @@ table{
   text-wrap: nowrap;
 }
 
-table, th,td{
+table,
+th,
+td {
   border: 1px solid rgb(127, 127, 127);
 }
 
-thead{
+thead {
   border-radius: 12px 12px 0 0;
 }
 
-thead th{
+thead th {
   padding: 8px;
   background-color: #b5b4b4;
   color: #fff;
 }
 
-tbody td{
+tbody td {
   padding: 8px;
 }
 
 
-.tool{
+.tool {
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
 }
 
-.fa-pen{
+.fa-pen {
   margin-right: 8px;
   cursor: pointer;
 }
 
-.fa-trash-can{
+.fa-trash-can {
   cursor: pointer;
 }
 
 
-td a{
+td a {
   text-decoration: none;
   color: #333333;
   display: block;
 }
 
 /* RWD */
-@media(max-width:800px){
-  .search_block{
+@media(max-width:800px) {
+  .search_block {
     flex-direction: column;
   }
 
-  .search_first_block{
+  .search_first_block {
     width: 100%;
   }
 
-  .search_second_block{
+  .search_second_block {
     width: 100%;
     gap: 12px;
   }
 
-  .search_second_block .search{
+  .search_second_block .search {
     width: 50%;
   }
 
-  .search_second_block input{
+  .search_second_block input {
     width: 100%;
   }
-  
-  .add_block{
+
+  .add_block {
     width: 50%;
   }
 
-  .add_btn{
+  .add_btn {
     width: 100%;
   }
 
-  .table_block{
+  .table_block {
     overflow-x: auto;
   }
 }
 
-@media(max-width:500px){
-  .search_second_block{
-    flex-direction: column;;
+@media(max-width:500px) {
+  .search_second_block {
+    flex-direction: column;
+    ;
   }
 
-  .search_second_block .search{
+  .search_second_block .search {
     width: 100%;
   }
 
-  .search_second_block input{
+  .search_second_block input {
     margin-bottom: 12px;
   }
 
-  .add_block{
+  .add_block {
     width: 100%;
   }
 
-  .add_btn{
+  .add_btn {
     width: 100%;
   }
 
-  .wrapper{
+  .wrapper {
     padding-bottom: 30px;
   }
 }
-
 </style>
