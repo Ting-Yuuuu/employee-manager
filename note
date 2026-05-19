@@ -1,0 +1,12 @@
+請先執行 npm install 因為我新增了 json-server
+
+json-server詳情使用方法請看 https://ithelp.ithome.com.tw/m/articles/10187889
+
+要執行 json-server 請於終端機執行
+"json-server 檔案名"
+
+你可以直接複製這裡：
+json-server database.json
+
+
+具體如何使用 api 請看這篇文 https://ithelp.ithome.com.tw/m/articles/10322620
