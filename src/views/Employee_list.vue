@@ -4,14 +4,20 @@ import { onMounted, ref } from 'vue'
 
 import axios from "axios";
 
+// 容器，用來裝員工資料。
 const employee_list = ref([])
 
+//建立取的員工的function，使用axios套件向後端發送請求，獲取員工資料，並將資料放到employee_list容器裡面。
 const getPeople = async () => {
+  // try catch 是用來處理異常的，當我們向後端發送請求時，如果出現錯誤（例如：網路問題、後端錯誤等），就會進入catch區塊，這樣我們就可以在catch裡面處理錯誤，例如：顯示錯誤訊息、記錄錯誤等。
   try {
+    // 這裡的URL是我們後端的API地址，根據你的後端設定可能會有所不同，請確保URL正確指向你的後端API。
     const res = await axios.get('http://localhost:3000/people');
 
+    // 當我們成功獲取到員工資料後，就將資料放到employee_list容器裡面，這樣我們在模板中就可以使用employee_list來顯示員工資料了。
     employee_list.value = res.data;
   } catch (err) {
+    // 這裡vue規定了一定要寫catch，否則會報錯，所以我們在catch裡面簡單地將錯誤訊息輸出到控制台，這樣我們就可以知道發生了什麼錯誤。
     console.error(err);
   }
 };
@@ -209,7 +215,7 @@ onMounted(function () {
 
 <style scoped>
 /* 內容區 */
-.wrapper{
+.wrapper {
   width: 100%;
   margin: 0 auto;
 }
