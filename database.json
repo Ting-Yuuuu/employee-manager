@@ -1,8 +1,49 @@
 {
   "people": [
     {
-      "id": 0,
-      "name": "Anna"
+      "id": "001",
+      "department": "主管部門",
+      "job": "執行長", 
+      "name": "Wendy",
+      "email": "abcde@gmail.com",
+      "phone": "0987654321", 
+      "birthday": "2002/02/22"
+    },
+    {
+      "id": "002",
+      "department": "前端部門",
+      "job": "前端工程師", 
+      "name": "Dandy",
+      "email": "abcde@gmail.com",
+      "phone": "0987654321", 
+      "birthday": "2002/02/22"
+    },
+    {
+      "id": "003",
+      "department": "後端部門",
+      "job": "後端工程師", 
+      "name": "Kevin",
+      "email": "abcde@gmail.com",
+      "phone": "0987654321", 
+      "birthday": "2002/02/22"
+    },
+    {
+      "id": "004",
+      "department": "前端部門",
+      "job": "技術主管", 
+      "name": "Kai",
+      "email": "abcde@gmail.com",
+      "phone": "0987654321", 
+      "birthday": "2002/02/22"
+    },
+    {
+      "id": "005",
+      "department": "後端部門",
+      "job": "後端工程師", 
+      "name": "Anna",
+      "email": "abcde@gmail.com",
+      "phone": "0987654321", 
+      "birthday": "2002/02/22"
     }
   ]
 }
