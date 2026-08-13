@@ -1,7 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router';
 
 import axios from "axios";
 
@@ -79,7 +78,6 @@ const totalData = computed(function(){
   return employee_list.value.length;
 })
 
-// --------
 
 </script>
 
@@ -168,8 +166,7 @@ const totalData = computed(function(){
             <td>{{ employee.birthday }}</td>
             <td>
               <div class="tool">
-                <!-- <RouterLink to="/Edit_employee"><font-awesome-icon icon="fa-pen"></font-awesome-icon></RouterLink> -->
-                <button ><font-awesome-icon icon="fa-pen"></font-awesome-icon></button>
+                <RouterLink to="/Edit_employee"><font-awesome-icon icon="fa-pen"></font-awesome-icon></RouterLink>
                 <font-awesome-icon icon="fa-trash-can"></font-awesome-icon>
               </div>
             </td>
